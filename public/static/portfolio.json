@@ -1,0 +1,53 @@
+[
+  {
+    "className": "youtube grid-item",
+    "classNameA": "popup-youtube",
+    "title": "Mockup Shape",
+    "category": "Youtube",
+    "videoUrl": "https://www.youtube.com/embed/7e90gBu4pas?autoplay=1",
+    "thumbnail": "img/thumbs/42-56.jpg",
+    "href": "videoUrl"
+  },
+  {
+    "className": "vimeo grid-item",
+    "classNameA": "popup-vimeo",
+    "title": "Ave Bottle",
+    "category": "Vimeo",
+    "videoUrl": "https://player.vimeo.com/video/337293658?autoplay=1",
+    "thumbnail": "img/thumbs/42-56.jpg",
+    "href": "videoUrl"
+  },
+  {
+    "className": "soundcloud grid-item",
+    "classNameA": "soundcloude_link mfp-iframe audio",
+    "title": "Magic Art",
+    "category": "Soundcloud",
+    "audioUrl": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/471954807&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+    "thumbnail": "img/thumbs/42-34.jpg",
+    "href": "audioUrl"
+  },
+  {
+    "className": "popup grid-item",
+    "classNameA": "zoom",
+    "title": "Scott Felix",
+    "category": "Popup",
+    "thumbnail": "img/thumbs/42-56.jpg",
+    "href": "imgUrl"
+  },
+  {
+    "className": "popup grid-item",
+    "classNameA": "zoom",
+    "title": "Art Stone",
+    "category": "Popup",
+    "thumbnail": "img/thumbs/42-34.jpg",
+    "href": "imgUrl"
+  },
+  {
+    "className": "detail grid-item",
+    "classNameA": "portfolio_popup",
+    "title": "Global Evolution",
+    "category": "Detail",
+    "thumbnail": "img/thumbs/42-34.jpg",
+    "href": "#"
+  }
+]
