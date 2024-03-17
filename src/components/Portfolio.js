@@ -8,18 +8,21 @@ const Portfolio = () => {
   const portfolioRef = useRef(null);
 
   useEffect(async () => {
-    const projectData = await fatchData(
+    const data = await fatchData(
       "https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae"
     );
+    const projectData = data.user.projects.filter((obj) => obj.enabled);
 
     const localProjectsData = await fatchData("/static/portfolio.json");
-    const projectsArr = localProjectsData.map((project, i) => {
-      return {
-        ...project,
-        imgUrl: projectData.user.projects[i].image.url,
-        title: projectData.user.projects[i].title,
-      };
-    });
+    const projectsArr = localProjectsData
+      .sort((a, b) => a.sequence - b.sequence)
+      .map((project, i) => {
+        return {
+          ...project,
+          imgUrl: projectData[i].image.url,
+          title: projectData[i].title,
+        };
+      });
     setProjects(projectsArr);
     portfolioHover();
   }, []);

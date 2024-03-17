@@ -117,13 +117,14 @@ const Testimonial = () => {
             <div className="left_details">
               {leftData &&
                 leftData.length &&
-                leftData.map((obj) => {
+                leftData.map((obj, i) => {
                   return (
                     <div
                       className={obj.className}
                       data-wow-duration={obj.datawowduration}
                       data-wow-delay={obj.datawowdelay}
                       data-img-url={obj.img}
+                      key={i}
                     />
                   );
                 })}

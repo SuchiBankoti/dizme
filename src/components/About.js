@@ -1,7 +1,37 @@
+import { useEffect, useState } from "react";
 import Counter from "./Counter";
+import { fatchData } from "../utilits";
+import AboutPopup from "./popup/AboutPopUp";
+
 const About = ({ dark }) => {
+  const [aboutData, setAboutData] = useState([]);
+  const [popupdataEdu, setPopupdataEdu] = useState([]);
+  const [popupdataExp, setPopupdataExp] = useState([]);
+  const [popupdata, setPopupdata] = useState([]);
+  const [popup, setPopup] = useState(false);
+
+  useEffect(async () => {
+    const aboutData = await fatchData(
+      "https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae"
+    );
+    const education = aboutData.user.timeline
+      .sort((a, b) => a.sequence - b.sequence)
+      .filter((obj) => obj.forEducation && obj.enabled);
+    const experience = aboutData.user.timeline
+      .filter((obj) => !obj.forEducation && obj.enabled)
+      .sort((a, b) => a.sequence - b.sequence);
+    setAboutData(aboutData.user.about);
+    setPopupdataEdu(education);
+    setPopupdataExp(experience);
+  }, []);
+
+  const onClick = (arr) => {
+    setPopup(true);
+    setPopupdata(arr);
+  };
   return (
     <div className="dizme_tm_section" id="about">
+      <AboutPopup data={popupdata} open={popup} close={() => setPopup(false)} />
       <div className="dizme_tm_about">
         <div className="container">
           <div className="wrapper">
@@ -36,18 +66,24 @@ const About = ({ dark }) => {
             </div>
             <div className="right">
               <div className="title wow fadeInUp" data-wow-duration="1s">
-                <span>{`I'm a Designer`}</span>
-                <h3>I Can Design Anything You Want</h3>
+                <span>{aboutData.title}</span>
+                <h3>{aboutData.quote}</h3>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  color: "red",
+                  cursor: "pointer",
+                }}
+              >
+                <strong onClick={() => onClick(popupdataEdu)}>Education</strong>
+                <strong onClick={() => onClick(popupdataExp)}>
+                  Experience
+                </strong>
               </div>
               <div className="text wow fadeInUp" data-wow-duration="1s">
-                <p>
-                  {`Hello there! I'm a web designer, and I'm very passionate and
-                  dedicated to my work. With 20 years experience as a
-                  professional web developer, I have acquired the skills and
-                  knowledge necessary to make your project a success. I enjoy
-                  every step of the design process, from discussion and
-                  collaboration.`}
-                </p>
+                <p>{aboutData.description}</p>
               </div>
               <div
                 className="dizme_tm_button wow fadeInUp"

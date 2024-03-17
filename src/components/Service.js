@@ -13,7 +13,7 @@ const Service = ({ dark }) => {
     const serviceData = await fatchData(
       "https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae"
     );
-    const services = serviceData.user.services;
+    const services = serviceData.user.services.filter((obj) => obj.enabled);
 
     const localData = await fatchData("/static/service.json");
     const temp = localData.map((service, i) => {

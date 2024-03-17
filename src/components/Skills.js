@@ -9,14 +9,17 @@ const Skills = ({ dark }) => {
     const skillData = await fatchData(
       "https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae"
     );
-    const skillArr = skillData.user.skills.map((obj, i) => {
-      const { percentage: value, name } = obj;
-      return {
-        value,
-        name,
-        color: INDEX_COLORS[i],
-      };
-    });
+    const skillArr = skillData.user.skills
+      .sort((a, b) => a.sequence - b.sequence)
+      .filter((obj) => obj.enabled)
+      .map((obj, i) => {
+        const { percentage: value, name } = obj;
+        return {
+          value,
+          name,
+          color: INDEX_COLORS[i],
+        };
+      });
     setSkills(skillArr);
   }, []);
   useEffect(() => {

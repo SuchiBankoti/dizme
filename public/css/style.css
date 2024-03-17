@@ -1425,11 +1425,15 @@ h6 {
 }
 .dodo_progress {
   width: 100%;
-  height: auto;
+  /* height: auto; */
   clear: both;
   float: left;
   padding-top: 30px;
-  overflow: hidden;
+  overflow-y: hidden;
+  height: 230px;
+}
+.dodo_progress:hover {
+  overflow-y: scroll;
 }
 .progress_inner {
   width: 100%;
