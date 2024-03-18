@@ -2,14 +2,11 @@
   "name": "dizme",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://suchibankoti.github.io/dizme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deploy": "npm run build && gh-pages -d out",
-    "predeploy": "npm run build"
+    "lint": "next lint"
   },
   "dependencies": {
     "html-react-parser": "^1.4.8",
