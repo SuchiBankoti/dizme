@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "deploy": "npm run build && gh-pages -d out",
-    "predeploy": "npm run export"
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "html-react-parser": "^1.4.8",
